@@ -83,7 +83,8 @@ add_dependencies(robots-test rust_robots)
 # Specify link libraries
 target_link_libraries(robots-test
         debug "${CMAKE_SOURCE_DIR}/target/debug/librust_robotstxt.a"
-        optimized "${CMAKE_SOURCE_DIR}/target/release/librust_robotstxt.a")
+        optimized "${CMAKE_SOURCE_DIR}/target/release/librust_robotstxt.a"
+        ${CMAKE_DL_LIBS})
 
 set_target_properties(robots-test PROPERTIES CXX_STANDARD 11 CXX_STANDARD_REQUIRED ON)
 
