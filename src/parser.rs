@@ -204,7 +204,9 @@ impl<'a, Handler: RobotsParseHandler> RobotsTxtParser<'a, Handler> {
             if let Some(sep) = sep {
                 let val = &line[sep..].trim();
                 // since we dropped trailing whitespace above.
-                assert!(!val.is_empty());
+                if val.is_empty() {
+                    return ("", "", false);
+                }
 
                 if val.find(|c| white.contains(c)).is_some() {
                     // We only accept whitespace as a separator if there are exactly two
